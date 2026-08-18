@@ -1,0 +1,23 @@
+creator-roi-intelligence/
+│
+├── .env.example              # tells you what secret to add
+├── .gitignore
+├── requirements.txt          # only what Phase 1 needs: requests, python-dotenv, pandas, pyyaml
+├── README.md                 # project overview, updated as we go
+│
+├── config/
+│   └── settings.yaml         # niches, regions, quota limits — no code changes needed to tweak these
+│
+├── data/
+│   └── raw/                  # empty for now — this is where youtube_creators_real.csv lands
+│
+├── src/
+│   └── creator_roi/
+│       ├── __init__.py
+│       ├── settings.py       # loads settings.yaml + .env
+│       └── fetch_data/
+│           ├── __init__.py
+│           └── youtube.py    # the real API-pulling logic (refactored, reusable, testable)
+│
+└── run/
+    └── get_youtube_data.py   # the actual script you run: `python run/get_youtube_data.py`

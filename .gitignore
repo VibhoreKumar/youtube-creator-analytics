@@ -1,0 +1,18 @@
+# secrets - never commit these
+.env
+.streamlit/secrets.toml
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# data - large/regenerable, don't need to be in git
+data/raw/*
+data/cleaned/*
+data/final/*
+!data/raw/.gitkeep
+
+# os
+.DS_Store

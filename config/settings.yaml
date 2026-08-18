@@ -1,0 +1,28 @@
+# Settings for pulling real creator data from YouTube.
+# Change values here instead of editing Python code.
+
+youtube:
+  # topics we search for - maps to the ROI-by-niche analysis later
+  niches:
+    - "Beauty"
+    - "Fitness"
+    - "Tech Review"
+    - "Fashion"
+    - "Food"
+    - "Travel"
+    - "Gaming"
+    - "Personal Finance"
+    - "Parenting"
+    - "Home Decor"
+
+  # None = global search, "IN" = biased toward India results
+  # (YouTube's regionCode biases relevance, it does not strictly filter by
+  # creator location - worth noting in docs/about_the_data.md)
+  regions:
+    - null
+    - "IN"
+
+  max_results_per_search: 50       # YouTube API max per call
+  engagement_sample_videos: 5      # how many recent videos per channel to check
+  max_channels_for_engagement: 700 # quota control - engagement step is the expensive part
+  request_pause_seconds: 0.05      # be polite to the API between calls
