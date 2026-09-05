@@ -20,8 +20,11 @@ def _get_secret(key_name):
     to the local .env file (for running on your own machine)."""
     try:
         if hasattr(st, 'secrets') and st.secrets:
-            return st.secrets[key_name]
-    except (KeyError, AttributeError):
+            # Only access secrets if Streamlit is properly initialized
+            return st.secrets.get(key_name)
+    except (KeyError, AttributeError, FileNotFoundError, Exception):
+        # FileNotFoundError: secrets.toml missing
+        # Exception: catches StreamlitSecretNotFoundError and other Streamlit errors
         pass
     return os.environ.get(key_name)
 
