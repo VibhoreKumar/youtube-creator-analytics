@@ -60,15 +60,18 @@ def get_data_raw_folder():
 
 
 def get_supabase_connection_params():
-    """Reads Supabase Postgres connection details as separate pieces,
-    so special characters in the password don't break anything."""
-    return {
+    
+    params = {
         "host": _get_secret("SUPABASE_HOST"),
         "port": _get_secret("SUPABASE_PORT") or "5432",
         "database": _get_secret("SUPABASE_DB") or "postgres",
         "user": _get_secret("SUPABASE_USER") or "postgres",
         "password": _get_secret("SUPABASE_PASSWORD"),
     }
+    missing = [k for k, v in params.items() if not v]
+    if missing:
+        raise ValueError(f"Missing required Supabase config: {', '.join(missing)}")
+    return params
 
 
 def get_gemini_api_key():
