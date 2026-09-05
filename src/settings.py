@@ -19,9 +19,11 @@ def _get_secret(key_name):
     """Checks Streamlit Cloud's secrets first (for deployment), falls back
     to the local .env file (for running on your own machine)."""
     try:
-        return st.secrets[key_name]
-    except (KeyError, FileNotFoundError):
-        return os.environ.get(key_name)
+        if hasattr(st, 'secrets') and st.secrets:
+            return st.secrets[key_name]
+    except (KeyError, AttributeError):
+        pass
+    return os.environ.get(key_name)
 
 
 def load_settings():
