@@ -60,13 +60,12 @@ def get_data_raw_folder():
 
 
 def get_supabase_connection_params():
-    
     params = {
         "host": _get_secret("SUPABASE_HOST"),
         "port": _get_secret("SUPABASE_PORT") or "5432",
         "database": _get_secret("SUPABASE_DB") or "postgres",
         "user": _get_secret("SUPABASE_USER") or "postgres",
-        "password": _get_secret("SUPABASE_PASSWORD"),
+        "password": _get_secret("SUPABASE_PASSWORD"),  # Currently required
     }
     missing = [k for k, v in params.items() if not v]
     if missing:
