@@ -5,7 +5,7 @@ sponsorships/endorsements — real engagement data, anomaly detection for
 suspicious accounts, budget allocation recommendations, and a natural-language
 "ask your data" search bar powered by Gemini.
 
-**Live app:** https://share.streamlit.io/app/dealsense-zswzbqssrmg4xnizzxpxi/
+**Live app:** https://youtube-creator-analytics-jflipbqujlpcp4xnvmmuaa.streamlit.app/
 
 > **Data note:** This project combines real YouTube creator data with a
 > clearly-labeled synthetic cost layer, since real brand-to-creator campaign
